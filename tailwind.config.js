@@ -7,6 +7,11 @@ export default {
         christmas: ["Mountains of Christmas", "serif"],
         mon: ["Montserrat", "sans-serif"],
       },
+      backgroundImage: {
+        'header-image': "url('/src/assets/images/fondo_header.jpg')",
+        'feature-one-image': "url('/src/assets/images/arbol_navidad_royal.jpg')",
+        'feature-two-image': "url('/src/assets/images/navidad_royal.jpeg')",
+      },
     },
   },
   plugins: [require("daisyui")],
