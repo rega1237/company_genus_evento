@@ -46,7 +46,7 @@
             Evento de Navidad Cocina con lo mejor de Royal Prestige
           </h1>
           <h2 class="text-white text-[1rem] w-[90%] m-auto md:w-full font-bold">
-            Novedades para cocinar saludable y con estilo utilizando lo mejor de
+            Novedades para cocinar saludable y con estilo, utilizando lo mejor de
             los utensilios de Royal Prestige
           </h2>
           <a
@@ -192,7 +192,7 @@
                   ¿Conoces la marca de royal prestige?
                 </option>
                 <option value="cliente">Si, soy cliente</option>
-                <option value="No es cliente">No, no soy cliente</option>
+                <option value="Si, no soy cliente">Si, no soy cliente</option>
                 <option value="No conoce la marca">No conozco la marca</option>
               </select>
 
@@ -503,18 +503,108 @@
             <h2 class="text-4xl text-accent md:text-5xl font-bold mb-6">
               Sobre Nosotros
             </h2>
-            <p class="text-lg text-white text-muted-foreground leading-relaxed">
-              Con nuestros 8 años de experiencia ayudando a cientos de familias
-              hemos representando la marca a través de estos hogares que nos han
-              brindado su confianza y apoyo incondicional para poder asesorarlos
-              logrando transformar sus vidas y sus generaciones llevando calidad
-              a sus cocinas logrando más corazones contentos con los utensilios
-              de Royal Prestige.
+            <p class="text-lg text-white text-justify text-muted-foreground leading-relaxed">
+              Con nuestros 8 años de experiencia ayudando a cientos de familias,
+              hemos representando la marca a través de los hogares que nos han
+              brindado su confianza y apoyo incondicional, logrando asesorarlos
+              para transformar sus vidas y sus generaciones, llevando calidad a
+              sus cocinas para más corazones contentos con los utensilios de
+              Royal Prestige.
             </p>
           </div>
         </div>
       </div>
     </section>
+
+    <div id="modal" class="hidden">
+      <div
+        id="backdrop"
+        class="fixed top-0 w-full h-screen z-40 bg-accent opacity-10"
+      ></div>
+      <div
+        id="modal-content"
+        class="fixed flex flex-col gap-3 justify-center items-center top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 z-50 bg-base-100 p-10 rounded-lg"
+      >
+        <img src="src/assets/images/logo_navidad.png" alt="" class="w-44" />
+        <h2 class="text-3xl font-bold font-christmas text-center">
+          Reservando tu cupo VIP...
+        </h2>
+        <span class="loading loading-spinner text-accent w-[100px]"></span>
+      </div>
+    </div>
     <script type="module" src="/src/main.js"></script>
+    <script type="module" src="/src/main.js"></script>
+    <script
+      type="text/javascript"
+      src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"
+    ></script>
+    <script type="text/javascript">
+      (function () {
+        emailjs.init({
+          publicKey: "piYg8yhy8pnjCSIu3",
+        });
+      })();
+    </script>
+    <script>
+      const name = document.getElementById("name");
+      const email = document.getElementById("email");
+      const form = document.getElementById("form");
+      const modal = document.getElementById("modal");
+
+      form.addEventListener("submit", async (e) => {
+        e.preventDefault();
+
+        modal.classList.remove("hidden");
+
+        await emailjs
+          .send("service_x474ama", "template_x3004re", {
+            name: name.value,
+            email: email.value,
+          })
+          .then(
+            function (response) {
+              console.log("SUCCESS!", response.status, response.text);
+            },
+            function (error) {
+              console.log("FAILED...", error);
+              modal.classList.add("hidden");
+              alert(
+                "Ocurrió un error con el registro. Por favor, intente de nuevo."
+              );
+            }
+          );
+
+        // Perform an AJAX request to submit the form
+        var xhr = new XMLHttpRequest();
+        xhr.open("POST", form.action);
+        xhr.onreadystatechange = function () {
+          if (xhr.readyState === XMLHttpRequest.DONE) {
+            if (xhr.status === 200) {
+              var response = xhr.responseText;
+              console.log(response);
+              form.reset(); // Clear the form fields
+              if (window.location.href.includes("#form")) {
+                modal.classList.add("hidden");
+                window.location.href = `${window.location.href.replace(
+                  "#form",
+                  "reclamar_entrada"
+                )}`; // Redirect to a new page
+              } else {
+                modal.classList.add("hidden");
+                window.location.href = `${window.location.href}reclamar_entrada`; // Redirect to a new page
+              }
+            } else {
+              // Error response
+              console.error("Error:", xhr.status, xhr.statusText);
+              modal.classList.add("hidden");
+              alert(
+                "Ocurrió un error con el registro. Por favor, intente de nuevo."
+              );
+            }
+          }
+        };
+        xhr.send(new FormData(form));
+      });
+    </script>
   </body>
 </html>
