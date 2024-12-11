@@ -16,6 +16,35 @@
       href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap"
       rel="stylesheet"
     />
+    <!-- Meta Pixel Code -->
+    <script>
+      !(function (f, b, e, v, n, t, s) {
+        if (f.fbq) return;
+        n = f.fbq = function () {
+          n.callMethod
+            ? n.callMethod.apply(n, arguments)
+            : n.queue.push(arguments);
+        };
+        if (!f._fbq) f._fbq = n;
+        n.push = n;
+        n.loaded = !0;
+        n.version = "2.0";
+        n.queue = [];
+        t = b.createElement(e);
+        t.async = !0;
+        t.src = v;
+        s = b.getElementsByTagName(e)[0];
+        s.parentNode.insertBefore(t, s);
+      })(
+        window,
+        document,
+        "script",
+        "https://connect.facebook.net/en_US/fbevents.js"
+      );
+      fbq("init", "928869239343091");
+      fbq("track", "PageView");
+    </script>
+    <!-- End Meta Pixel Code -->
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Evento Navideño</title>
   </head>
@@ -46,8 +75,8 @@
             Evento de Navidad Cocina con lo mejor de Royal Prestige
           </h1>
           <h2 class="text-white text-[1rem] w-[90%] m-auto md:w-full font-bold">
-            Novedades para cocinar saludable y con estilo, utilizando lo mejor de
-            los utensilios de Royal Prestige
+            Novedades para cocinar saludable y con estilo, utilizando lo mejor
+            de los utensilios de Royal Prestige
           </h2>
           <a
             href="#form"
@@ -503,7 +532,9 @@
             <h2 class="text-4xl text-accent md:text-5xl font-bold mb-6">
               Sobre Nosotros
             </h2>
-            <p class="text-lg text-white text-justify text-muted-foreground leading-relaxed">
+            <p
+              class="text-lg text-white text-justify text-muted-foreground leading-relaxed"
+            >
               Con nuestros 8 años de experiencia ayudando a cientos de familias,
               hemos representando la marca a través de los hogares que nos han
               brindado su confianza y apoyo incondicional, logrando asesorarlos
@@ -606,5 +637,12 @@
         xhr.send(new FormData(form));
       });
     </script>
+    <noscript
+      ><img
+        height="1"
+        width="1"
+        style="display: none"
+        src="https://www.facebook.com/tr?id=928869239343091&ev=PageView&noscript=1"
+    /></noscript>
   </body>
 </html>
