@@ -7,6 +7,7 @@ export default defineConfig({
       input: {
         main: resolve(__dirname, 'index.html'),
         reclamar: resolve(__dirname, 'reclamar_entrada.html'),
+        politicas: resolve(__dirname, 'politicas_privacidad.html'),
       },
     },
   },
